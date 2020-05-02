@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<!--
+  Change github links to my own repo
+  adjust map data so sufficient data is shown for Bowdoin, but how?
+  change starting map location and demo pins to Bowdoin
+  update addpin.html to match index
+-->
 <html>
   <head>
     <!--OWN CSS-->
@@ -13,7 +19,7 @@
     crossorigin=""/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" crossorigin=""/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" crossorigin=""/>
-    <title>Crying @ CU</title>
+    <title>Crying @ BO</title>
   </head>
 
   <body>
@@ -21,7 +27,7 @@
 
     <button type="button" id="button" class="btn btn-light overlay orientation-button bodytext"><h1>Crying @ CU</h1></button>
     <div id="menu" class="overlay orientation-box">
-      <p class="bodytext">A geospatial storytelling platform for life's emotional moments at Columbia University.</p>
+      <p class="bodytext">A geospatial storytelling platform for life's emotional moments at Bowdoin College.</p>
       <p class="bodytext">Click through the pins to browse other people's stories and <a href="{{ url_for('addpin') }}">add your own</a> to the map.</p>
     </div>
 
