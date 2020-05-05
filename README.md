@@ -18,7 +18,12 @@ cd crying-at-cu
 
 Run server:
 ```
-export FLASK_APP=app.py
+For Windows Command:
+set FLASK_APP=server.py
+flask run
+
+For Mac Terminal:
+export FLASK_APP=server.py
 flask run
 ```
 
