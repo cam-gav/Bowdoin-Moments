@@ -51,52 +51,56 @@
 
     <script type="text/javascript">
       // create map
-      var mymap = L.map('mapid', {zoomControl: false}).setView([40.8075355,-73.96257270000001], 16);
+      //var mymap = L.map('mapid', {zoomControl: false}).setView([40.8075355,-73.96257270000001], 16);
+      var mymap = L.map('mapid', {zoomControl: false}).setView([43.90735,-69.96389], 16);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         //foo: 'bar', 
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-        //maxZoom: 18,
+        maxZoom: 19,
         
       }).addTo(mymap);
-
-      // //Raster:
-      // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-      // //Static:
-      // //L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-      //     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      
+      
+      /*
+      //Raster:
+      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      //Static:
+      //L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
           
-      //     ////For Raster Tiles API:
-      //     maxZoom: 19,
-      //     //id: 'mapbox.streets',
-      //     //id: 'mapbox.mapbox-streets-v8',
-      //     id: 'mapbox.dark',
+          ////For Raster Tiles API:
+          maxZoom: 19,
+          //id: 'mapbox.streets',
+          id: 'mapbox.mapbox-streets-v8',
+          //id: 'mapbox.dark',
 
-      //     ////For Static Tiles API:
-      //     //maxZoom: 20,
+          ////For Static Tiles API:
+          //maxZoom: 20,
 
-      //     //id: 'mapbox/streets-v11',
-      //     //id: 'mapbox/light-v10',
+          //id: 'mapbox/streets-v11',
+          //id: 'mapbox/light-v10',
 
-      //     //basic
-      //     //id: 'cpareja/ck9t5vns706ii1io8iviclrm6',
+          //basic
+          //id: 'cpareja/ck9t5vns706ii1io8iviclrm6',
 
-      //     //basic light
-      //     //id: 'cpareja/ck9t66fqe06qo1ip3x6v7zuty',
+          //basic light
+          //id: 'cpareja/ck9t66fqe06qo1ip3x6v7zuty',
 
-      //     //monochrome light
-      //     //id: 'cpareja/ck9t6bp9n06vz1ip3osp11do7',
+          //monochrome light
+          //id: 'cpareja/ck9t6bp9n06vz1ip3osp11do7',
 
-      //     //tileSize: 512,
-      //     //zoomOffset: -1,
+          //tileSize: 512,
+          //zoomOffset: -1,
 
 
-      //     accessToken: 'pk.eyJ1IjoiY3BhcmVqYSIsImEiOiJjazl0MG5pbmUxYjdwM2dxeHZjY3o1aG5uIn0.OLz2XRfLGsDnq5L7zOuGxQ'
-      //     //Mine:
-      //     //pk.eyJ1IjoiY3BhcmVqYSIsImEiOiJjazl0MG5pbmUxYjdwM2dxeHZjY3o1aG5uIn0.OLz2XRfLGsDnq5L7zOuGxQ
-      //     //Mah:
-      //     //pk.eyJ1IjoibWFoMjMwNiIsImEiOiJjam80dzM5NjYwMW5uM2ttcTFpcDZjdTlpIn0.c3w-0VKU2wcsVV1WDDi-bw
-      // }).addTo(mymap);
+          accessToken: 'pk.eyJ1IjoiY3BhcmVqYSIsImEiOiJjazl0MG5pbmUxYjdwM2dxeHZjY3o1aG5uIn0.OLz2XRfLGsDnq5L7zOuGxQ'
+          //Mine:
+          //pk.eyJ1IjoiY3BhcmVqYSIsImEiOiJjazl0MG5pbmUxYjdwM2dxeHZjY3o1aG5uIn0.OLz2XRfLGsDnq5L7zOuGxQ
+          //Mah:
+          //pk.eyJ1IjoibWFoMjMwNiIsImEiOiJjam80dzM5NjYwMW5uM2ttcTFpcDZjdTlpIn0.c3w-0VKU2wcsVV1WDDi-bw
+      }).addTo(mymap);
+      */
 
       L.control.zoom({position:'topright'}).addTo(mymap);
 
