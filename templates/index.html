@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <!--
   Change github links to my own repo
-  adjust map data so sufficient data is shown for Bowdoin, but how?
+  update readme
+  update repo info for bowdoin moments
   change starting map location and demo pins to Bowdoin
   update addpin.html to match index
+  is "addpin a problem" in addpin.html at the bottom. Or change it to 'addpin'
 -->
 <html>
   <head>
@@ -27,8 +29,9 @@
 
     <button type="button" id="button" class="btn btn-light overlay orientation-button bodytext"><h1>Bowdoin Moments</h1></button>
     <div id="menu" class="overlay orientation-box">
-      <p class="bodytext">A geospatial storytelling platform for capturing meaningful moments at Bowdoin College. This story is a collective enterprise—together, our moments map the beauty and depth of life at Bowdoin.</p>
-      <p class="bodytext">Click through the pins to browse other people's stories and <a href="{{ url_for('addpin') }}">add your own</a> to the map.</p>
+      <p class="bodytext">A geospatial storytelling platform for capturing meaningful moments at Bowdoin College. This story is a collective project—together, our moments map the layers of life at Bowdoin.</p>
+      <p class="bodytext">Click through the pins to browse other people's moments or <a href="{{ url_for('addpin') }}">add your own</a> to the map.
+        <br>You can click the title above to hide this box.</p>
     </div>
 
     <a id="footer" href="https://github.com/mahzabin-hasnath/"><i class="fab fa-github overlay orientation-footer"></i></a>
@@ -57,7 +60,6 @@
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
         maxZoom: 19,
-        
       }).addTo(mymap);
       
       
