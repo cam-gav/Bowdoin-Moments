@@ -121,7 +121,7 @@
       function renderData() {
         $.getJSON("/pindata", function(obj) {
             var markers = obj.data.map(function(arr) {
-              return L.marker([arr[0], arr[1]]).bindPopup("<b>I cried @ "+ arr[3] + "</b> <br><br>" + arr[2] + "<br><br>" + icon);
+              return L.marker([arr[0], arr[1]]).bindPopup("<b>Location: "+ arr[3] + "<br>-" + arr[4] + "-</b><br>" + arr[2]);
           });
         layer = L.layerGroup(markers);
         mymap.addLayer(layer);

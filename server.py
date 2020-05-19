@@ -16,11 +16,16 @@ class Pin(db.Model):
     long = db.Column(db.Float, nullable=False)
     reason = db.Column(db.Text, nullable=False)
     place = db.Column(db.Text, nullable=False)
-    def __init__(self, lat, long, reason, place):
+    year = db.Column(db.Text, nullable=False)
+    def __init__(self, lat, long, reason, place, year):
         self.lat = lat
         self.long = long
         self.reason = reason
         self.place = place
+        self.year = year
+
+    def __repr__(self):
+        return f"Pin('{self.lat}', '{self.long}', '{self.place}', '{self.year}', '{self.reason}')"
 
 
 @app.route('/')
@@ -30,14 +35,14 @@ def index():
 @app.route('/pindata')
 def pindata():
     pins = Pin.query.all()
-    data = [[pin.lat, pin.long, pin.reason, pin.place] for pin in pins]
+    data = [[pin.lat, pin.long, pin.reason, pin.place, pin.year] for pin in pins]
     return jsonify({"data": data})
 
 @app.route('/addpin', methods=['GET', 'POST'])
 def addpin():
     if request.method == 'POST':
         data = request.get_json()
-        pin = Pin(data["latitude"], data["longitude"], data["reason"], data["place"])
+        pin = Pin(data["latitude"], data["longitude"], data["reason"], data["place"], data["year"])
         db.session.add(pin)
         db.session.commit()
         return redirect(url_for('index'))

@@ -70,7 +70,7 @@
       function renderData() {
         $.getJSON("/pindata", function(obj) {
             var markers = obj.data.map(function(arr) {
-              return L.marker([arr[0], arr[1]]).bindPopup(arr[2]).openPopup();
+              return L.marker([arr[0], arr[1]]).bindPopup("<b>Location: "+ arr[3] + "<br>-" + arr[4] + "-</b><br>" + arr[2]).openPopup();
           });
 
         layer = L.layerGroup(markers);
@@ -81,12 +81,16 @@
       $(function() {renderData();})
 
       var template = '<form id="popup-form">\
-            <b>Location, Class Year:</b> \
-            <input type="text" id="place" name="place" placeholder="Ex: HL 1st floor, 2020">\
+            <b>Location: </b>\
+            <input type="text" id="place" name="place" placeholder="Ex: HL 1st floor">\
+            <p></p>\
+            <b>Class Year (Optional): </b>\
+            <input type="text" id="year" name="year" placeholder="YYYY"\
             <p></p>\
             <b>Why was this moment meaningful? Why here? What year was it? How did you feel?:</b>\
             <textarea rows="9" cols="45" id="reason"></textarea>\
             <div id="location"></div>\
+            <div id="classyear"></div>\
             <div id="explanation"></div>\
             <div class="row">\
               <div class="col-md-2">\
@@ -113,14 +117,16 @@
         $(".submit").click(function() {
           var place = $('#place').val();
           var reason = $('#reason').val();
+          var year = $('#year').val();
           document.getElementById('location').innerHTML = place
+          document.getElementById('classyear').innerHTML = year
           document.getElementById('explanation').innerHTML = reason
 
           $.ajax({
               type: "POST",
-              url: "{{ url_for("addpin") }}",
+              url: "{{ url_for("addpin") }}", //to fix: change double quotes around addpin to single quotes. However, this is not currently necessary.
               contentType: "application/json",
-              data: JSON.stringify({"latitude": latitude, "longitude": longitude, "reason": reason, "place": place}),
+              data: JSON.stringify({"latitude": latitude, "longitude": longitude, "reason": reason, "place": place, "year": year}),
               dataType: "json",
               success: function(response) {
                   console.log(response);
