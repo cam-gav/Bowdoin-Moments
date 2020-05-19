@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <!--
-  Change github links to my own repo
-  update readme
-  update repo info for bowdoin moments
+  update repo info for bowdoin moments (based on readme?)
   make sure addpin site matches index site and vice versa
   is "addpin" a problem in addpin.html at the bottom? Or change it to 'addpin'?
+  merge this branch to main branch
 -->
 <html>
   <head>
@@ -29,13 +28,11 @@
     <button type="button" id="button" class="btn btn-light overlay orientation-button bodytext"><h1>Bowdoin Moments</h1></button>
     <div id="menu" class="overlay orientation-box">
       <p class="bodytext">A geospatial storytelling platform for capturing meaningful moments at Bowdoin College. This story is a collective project—together, our moments map the layers of life at Bowdoin.</p>
-      <p class="bodytext">Click through the pins to browse other people's moments or <a href="{{ url_for('addpin') }}">add your own</a> to the map.
-        <br>You can click the title above to hide this box.</p>
+      <p class="bodytext">Click through the pins to browse other people's moments or <a href="{{ url_for('addpin') }}">add your own</a> to the map.</p>
+      <p class="bodytext text-muted">You can click the title above to hide this box.</p>
     </div>
 
-    <a id="footer" href="https://github.com/mahzabin-hasnath/"><i class="fab fa-github overlay orientation-footer"></i></a>
-
-
+    <a id="footer" href="https://github.com/cam-gav/"><i class="fab fa-github overlay orientation-footer"></i></a>
 
     <!--BOOTSTRAP SCRIPTS-->
     <script src= "{{ url_for('static', filename='js/bootstrap.js') }}"></script>

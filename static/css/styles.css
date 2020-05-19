@@ -39,7 +39,7 @@ html, body, #mapid {
 }
 
 .bodytext {
-  font-family: "Source Sans Pro";
+  font-family: "Times New Roman", "Source Sans Pro", Times, serif;
 }
 
 .orientation-button {
