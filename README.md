@@ -4,7 +4,7 @@ A geospatial storytelling platform for the Bowdoin community and alumni to captu
 
 The interface is currently optimized for computer screens. You can access the site <a href="http://bowdoinmoments.pythonanywhere.com/">here</a>. If you are or have been part of the Bowdoin community, we encourage you to add a moment!
 
-Please report any questions or issues to 10cpareja@gmail.com
+Please report any questions or issues to 10cpareja@gmail.com.
 
 ## Demo
 Install dependencies: 
@@ -18,13 +18,14 @@ git clone https://github.com/cam-gav/Bowdoin-Moments.git
 cd Bowdoin-Moments
 ```
 
-Run server:
+Run server on Windows Command:
 ```
-For Windows Command:
 set FLASK_APP=server.py
 flask run
+```
 
-For Mac Terminal:
+OR run server on Mac Terminal:
+```
 export FLASK_APP=server.py
 flask run
 ```
