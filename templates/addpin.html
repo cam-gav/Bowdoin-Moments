@@ -53,16 +53,17 @@
         maxZoom: 19,
       }).addTo(mymap);
 
+      // For working with MapBox. Use index.html as reference. Requires access token.
       /*
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
           attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
           maxZoom: 20,
           id: 'mapbox.streets',
-          accessToken: 'pk.eyJ1IjoibWFoMjMwNiIsImEiOiJjam80dzM5NjYwMW5uM2ttcTFpcDZjdTlpIn0.c3w-0VKU2wcsVV1WDDi-bw'
+          accessToken: 'insert MapBox personal access token'
       }).addTo(mymap);
       */
 
-      L.control.zoom({position:'bottomright'}).addTo(mymap);
+      L.control.zoom({position:'topright'}).addTo(mymap);
 
       $( "#button" ).click(function() {
         $( "#menu" ).toggle();
@@ -125,7 +126,7 @@
 
           $.ajax({
               type: "POST",
-              url: "{{ url_for("addpin") }}", //to fix: change double quotes around addpin to single quotes. However, this is not currently necessary.
+              url: "{{ url_for('addpin') }}",
               contentType: "application/json",
               data: JSON.stringify({"latitude": latitude, "longitude": longitude, "reason": reason, "place": place, "year": year}),
               dataType: "json",

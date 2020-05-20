@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <!--
   update repo info for bowdoin moments (based on readme?)
-  make sure addpin site matches index site and vice versa
-  is "addpin" a problem in addpin.html at the bottom? Or change it to 'addpin'?
   merge this branch to main branch
 -->
 <html>
@@ -61,44 +59,45 @@
       }).addTo(mymap);
       
       /*
-      // -- For working with raster tilesets and static maps from Mapbox (change perosonal access token):
+      // -- For working with raster tilesets and static maps from Mapbox (needs perosonal access token):
 
       //Raster:
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       //Static:
       //L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+          
           attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
           
           ////For Raster Tiles API:
           maxZoom: 19,
+
+          // Pick one:
           //id: 'mapbox.streets',
           id: 'mapbox.mapbox-streets-v8',
           //id: 'mapbox.dark',
 
+          
           ////For Static Tiles API:
           //maxZoom: 20,
 
           //id: 'mapbox/streets-v11',
           //id: 'mapbox/light-v10',
 
-          //basic
+          // basic
           //id: 'cpareja/ck9t5vns706ii1io8iviclrm6',
 
-          //basic light
+          // basic light
           //id: 'cpareja/ck9t66fqe06qo1ip3x6v7zuty',
 
-          //monochrome light
+          // monochrome light
           //id: 'cpareja/ck9t6bp9n06vz1ip3osp11do7',
 
+          // Required for static tiles: 
           //tileSize: 512,
           //zoomOffset: -1,
+          
 
-
-          accessToken: 'pk.eyJ1IjoiY3BhcmVqYSIsImEiOiJjazl0MG5pbmUxYjdwM2dxeHZjY3o1aG5uIn0.OLz2XRfLGsDnq5L7zOuGxQ'
-          //Mine:
-          //pk.eyJ1IjoiY3BhcmVqYSIsImEiOiJjazl0MG5pbmUxYjdwM2dxeHZjY3o1aG5uIn0.OLz2XRfLGsDnq5L7zOuGxQ
-          //Mah:
-          //pk.eyJ1IjoibWFoMjMwNiIsImEiOiJjam80dzM5NjYwMW5uM2ttcTFpcDZjdTlpIn0.c3w-0VKU2wcsVV1WDDi-bw
+          accessToken: 'insert MapBox personal access token here'
       }).addTo(mymap);
       */
 
