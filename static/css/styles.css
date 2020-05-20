@@ -42,6 +42,10 @@ html, body, #mapid {
   font-family: "Times New Roman", "Source Sans Pro", Times, serif;
 }
 
+/* Implementation not currently working for the following two lines, so html files were accordingly styled within header*/
+.link { color: #00FF00; } /* CSS link hover (green) */
+.link:hover { color: #00FF00; } /* CSS link hover (green) */
+
 .orientation-button {
   top: 20px;
   margin-left: 20px;

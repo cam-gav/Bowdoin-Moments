@@ -20,13 +20,16 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" crossorigin=""/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" crossorigin=""/>
     <title>Bowdoin Moments</title>
+    <style>
+      a:hover { color: #00FF00; } /* CSS link hover (green) */
+    </style>
   </head>
 
   <body>
     <div id="mapid"></div>
 
-    <button type="button" id="button" class="btn btn-light overlay orientation-button bodytext"><h1>Bowdoin Moments</h1></button>
-    <div id="menu" class="overlay orientation-box">
+    <button type="button" id="button" class="btn btn-dark overlay orientation-button bodytext"><h1>Bowdoin Moments</h1></button>
+    <div id="menu" class="text-white bg-dark overlay orientation-box">
       <p class="bodytext">A geospatial storytelling platform for capturing meaningful moments at Bowdoin College. This story is a collective project—together, our moments map the layers of life at Bowdoin.</p>
       <p class="bodytext">Click through the pins to browse other people's moments or <a href="{{ url_for('addpin') }}">add your own</a> to the map.</p>
       <p class="bodytext text-muted">You can click the title above to hide this box.</p>
