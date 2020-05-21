@@ -23,11 +23,8 @@
     <button type="button" id="button" class="btn btn-dark overlay orientation-button bodytext"><h1>Bowdoin Moments</h1></button>
     <div id="menu" class="text-white bg-dark overlay orientation-box">
       <p class="bodytext"><b>Pin Your Own Moment</b></p>
-      <p class="bodytext">On the map, click where you want to add your moment.</p>
-      <p class="bodytext">Did you laugh, cry, feel at home, miss home...?
-        <br>Please share anything important to you, as long as it's connected to Bowdoin in some way.
-        <br>All submissions are anonymous. Feel free to get detailed and add more pins if you have more moments to share!
-      </p>
+      <p class="bodytext">On the map, click where you want to add your moment. Click and hold to drag pin (note this will reset what you wrote).</p>
+      <p class="bodytext">All submissions are anonymous.</p>
       <p class="bodytext">You may also <a href="{{ url_for('index') }}">go back to viewing</a> all pins.</p>
     </div>
 
@@ -89,7 +86,7 @@
             <b>Class Year (Optional): </b>\
             <input type="text" id="year" name="year" placeholder="YYYY"\
             <p></p>\
-            <b>Why was this moment meaningful? Why here? What year was it? How did you feel?:</b>\
+            <b>What happened? Why here? How did you feel? Why was this moment special?:</b>\
             <textarea rows="9" cols="45" id="reason"></textarea>\
             <div id="location"></div>\
             <div id="classyear"></div>\
