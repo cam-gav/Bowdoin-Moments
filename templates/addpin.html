@@ -69,7 +69,7 @@
       function renderData() {
         $.getJSON("/pindata", function(obj) {
             var markers = obj.data.map(function(arr) {
-              return L.marker([arr[0], arr[1]]).bindPopup("<b>Location: "+ arr[3] + "<br>-" + arr[4] + "-</b><br>" + arr[2]).openPopup();
+              return L.marker([arr[0], arr[1]]).bindPopup("<b>"+ arr[3] + "</b><br>" + arr[2] + "<br>'" + arr[4]).openPopup();
           });
 
         layer = L.layerGroup(markers);
@@ -84,7 +84,7 @@
             <input type="text" id="place" name="place" placeholder="Ex: HL 1st floor">\
             <p></p>\
             <b>Class Year (Optional): </b>\
-            <input type="text" id="year" name="year" placeholder="YYYY"\
+            <input type="text" id="year" name="year" placeholder="YY (no apostrophe)"\
             <p></p>\
             <b>What happened? Why here? How did you feel? Why was this moment special?:</b>\
             <textarea rows="9" cols="45" id="reason"></textarea>\
