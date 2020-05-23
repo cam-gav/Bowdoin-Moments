@@ -84,7 +84,7 @@
             <input type="text" id="place" name="place" placeholder="Ex: HL 1st floor">\
             <p></p>\
             <b>Class Year (Optional): </b>\
-            <input type="text" id="year" name="year" placeholder="YY (no apostrophe)"\
+            <input type="text" id="year" name="year" placeholder="\'YY"\
             <p></p>\
             <b>What happened? Why here? How did you feel? Why was this moment special?:</b>\
             <textarea rows="9" cols="45" id="reason"></textarea>\
@@ -134,6 +134,7 @@
                   console.log(err);
               }
           });
+          // Local vs Online replace:
           //window.location.replace('http://127.0.0.1:5000/')
           window.location.replace("{{ url_for('index') }}")
         });

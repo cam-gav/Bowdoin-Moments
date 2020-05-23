@@ -116,7 +116,13 @@
       function renderData() {
         $.getJSON("/pindata", function(obj) {
             var markers = obj.data.map(function(arr) {
-              return L.marker([arr[0], arr[1]]).bindPopup("<b>"+ arr[3] + "</b><br>" + arr[2] + "<br>'" + arr[4]);
+              // add apostrophe back in
+              return L.marker([arr[0], arr[1]]).bindPopup(
+                "<b>@ "+ arr[3] + "</b><br><br>" + 
+                arr[2] + 
+                //"<br><a class='card-text text-muted text-right' style='font-size:20px;'>'" + arr[4].substr(2, 2) + "</a>"
+                " <a class='text-muted' style='font-size:12px;'><i>" + arr[4] + "</i></a>"
+              );
           });
         layer = L.layerGroup(markers);
         mymap.addLayer(layer);
