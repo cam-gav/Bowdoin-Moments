@@ -134,7 +134,8 @@
                   console.log(err);
               }
           });
-          window.location.replace('http://127.0.0.1:5000/')
+          //window.location.replace('http://127.0.0.1:5000/')
+          window.location.replace("{{ url_for('index') }}")
         });
       }
       mymap.on('click', addMarker);
