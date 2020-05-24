@@ -2,7 +2,7 @@
 
 A geospatial storytelling platform for the Bowdoin community and alumni to capture meaningful moments at Bowdoin College. This story is a collective project—together, our moments map the layers of life at Bowdoin.
 
-The interface is currently optimized for computer screens. You can access the site <a href="http://bowdoinmoments.pythonanywhere.com/">here</a>. If you are or have been part of the Bowdoin community, we encourage you to add a moment!
+The interface is currently optimized for computer screens. <a href="http://bowdoinmoments.pythonanywhere.com/">You can access the site here</a>. If you are or have been part of the Bowdoin community, we encourage you to add a moment!
 
 Please report any questions or issues to 10cpareja@gmail.com.
 
