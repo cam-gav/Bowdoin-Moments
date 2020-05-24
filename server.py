@@ -24,9 +24,6 @@ class Pin(db.Model):
         self.place = place
         self.year = year
 
-    def __repr__(self):
-        return f"Pin('{self.lat}', '{self.long}', '{self.place}', '{self.year}', '{self.reason}')"
-
 
 @app.route('/')
 def index():
