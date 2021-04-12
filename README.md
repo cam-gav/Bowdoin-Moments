@@ -7,24 +7,29 @@ The interface is currently optimized for computer screens. <a href="http://bowdo
 Please report any questions or issues to 10cpareja@gmail.com.
 
 ## Demo
-Install dependencies: 
+
+Install dependencies:
+
 ```
 pip install Flask Flask-SQLAlchemy
 ```
 
 Clone repo:
+
 ```
 git clone https://github.com/cam-gav/Bowdoin-Moments.git
 cd Bowdoin-Moments
 ```
 
 Run server on Windows Command:
+
 ```
 set FLASK_APP=server.py
 flask run
 ```
 
 OR run server on Mac Terminal:
+
 ```
 export FLASK_APP=server.py
 flask run
@@ -33,10 +38,11 @@ flask run
 You can view the demo at `http://127.0.0.1:5000/` and look through the map and pins.
 
 ## Acknowledgements
-Thank you to Max Freeman, who birthed this idea and who I collaborated with in realizing this project.
+
+Thank you to Max Freeman, for planting the seed of this project.
 
 A special thanks to Mahzabin Hasnath, for inspiring this project with her website, <a href="http://cryingatcu.pythonanywhere.com/">Crying at CU</a>, and for generously providing her time and code in support of this project.
 
 Thank you to <a href="https://cryinginpublic.com/">Crying in Public</a> and <a href="https://www.queeringthemap.com/">Queering the Map</a> for also inspiring aspects of this project.
 
-And of course, thank you to Bowdoin College and to everyone who has added their Bowdoin Moment!
+And of course, thank you to Bowdoin College and to everyone who has added their Bowdoin Moment(s)!
