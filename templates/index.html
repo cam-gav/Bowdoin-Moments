@@ -40,14 +40,14 @@
 		<div id="mapid"></div>
 
 		<button type="button" id="button" class="btn btn-dark overlay orientation-button bodytext"><h1>Bowdoin Moments</h1></button>
-		<div id="menu" class="accordion accordion-flush text-white bg-dark overlay orientation-box">
+		<div id="menu" class="accordion text-white bg-dark overlay orientation-box">
 			<div class="accordion-item bg-dark">
-				<h2 class="accordion-header" id="flush-headingOne">
-					<button class="accordion-button collapsed bg-dark border-light text-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+				<h2 class="accordion-header" id="about">
+					<button class="accordion-button collapsed bg-secondary border-light text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 						About
 					</button>
 				</h2>
-				<div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#menu">
+				<div id="collapseOne" class="accordion-collapse collapse bg-dark show" aria-labelledby="about" data-bs-parent="#menu">
 					<div class="accordion-body bodytext">
 						<p>Welcome to our living autobiography!</p>
 						<p>We are a geospatial storytelling platform for capturing meaningful moments at Bowdoin College. This story is a collective project—together, our moments map the layers of life at Bowdoin.</p>
@@ -55,29 +55,32 @@
 				</div>
 			</div>
 			<div class="accordion-item bg-dark">
-				<h2 class="accordion-header" id="flush-headingTwo">
-					<button class="accordion-button collapsed bg-dark border-light text-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+				<h2 class="accordion-header" id="instructions">
+					<button class="accordion-button collapsed bg-secondary border-light text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
 						Instructions
 					</button>
 				</h2>
-				<div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#menu">
+				<div id="collapseTwo" class="accordion-collapse collapse bg-dark" aria-labelledby="instructions" data-bs-parent="#menu">
 					<div class="accordion-body bodytext">Click through the pins to browse other people's moments or <a href="{{ url_for('addpin') }}">add your own</a> to the map.</div>
 				</div>
 			</div>
 			<div class="accordion-item bg-dark">
-				<h2 class="accordion-header" id="flush-headingThree">
-					<button class="accordion-button collapsed bg-dark border-light text-white" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+				<h2 class="accordion-header" id="more">
+					<button class="accordion-button collapsed bg-secondary border-light text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 						More
 					</button>
 				</h2>
-				<div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#menu">
+				<div id="collapseThree" class="accordion-collapse collapse bg-dark" aria-labelledby="more" data-bs-parent="#menu">
 					<div class="accordion-body bodytext">
-						<p><a href="policy.html">Community Agreement & Privacy Policy</a></p>
+						<p><a href="{{ url_for('policy') }}">Community Agreement & Privacy Policy</a></p>
 						<p><a href="https://qfreeaccountssjc1.az1.qualtrics.com/jfe/form/SV_3UEcXI3C7s7n6VE" target="_blank">Submit feedback</a></p>
 						<p><a href="https://github.com/cam-gav/" target="_blank">GitHub <i class="fab fa-github"></i></a></p>
 				</div>
 			</div>
-			<p class="bodytext text-muted">Click the 'Bowdoin Moments' title to hide this box.</p>
+			<div class="alert alert-dark alert-warning alert-dismissible fade show bodytext" role="alert">
+				Click the 'Bowdoin Moments' title to toggle the menu.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
 		</div>
 
 		<!--BOOTSTRAP SCRIPTS-->
