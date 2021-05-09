@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-            <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!-- Opt-Out - Google Analytics -->
+        <script>
+            // Set to the same value as the web property used on the site
+            var gaProperty = 'G-6QX2QSCK81';
+            
+            // Disable tracking if the opt-out cookie exists.
+            var disableStr = 'ga-disable-' + gaProperty;
+            if (document.cookie.indexOf(disableStr + '=true') > -1) {
+              window[disableStr] = true;
+            }
+            
+            // Opt-out function
+            function gaOptout() {
+              document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+              window[disableStr] = true;
+            }
+        </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QX2QSCK81"></script>
         <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-        gtag('config', 'G-6QX2QSCK81');
+            gtag('config', 'G-6QX2QSCK81');
         </script>
 
         <!--OWN CSS-->
@@ -38,11 +55,43 @@
 
     <body>
         <div id="policy">
-            <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                <div class="card-header">Header</div>
+            <div class="card text-white bg-dark mb-3 mx-auto" style="max-width: 90vw;">
+                <div class="card-header"><b>Community Agreement</b></div>
                 <div class="card-body">
-                  <h5 class="card-title">Dark card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <!-- <h5 class="card-title">Pins</h5> -->
+                    <p>Pins may be removed after moderator revision if:</p>
+                    <ul>
+                        <li>They contain hate speech (including speech that attacks a person or group on the basis of race, ethnicity, religion, gender identity, gender expression, ability, or sexual orientation).</li>
+                        <li>They contain obscene, suggestive, vulgar, profane (including insinuated profanity using dashes or asterisks), threatening, disrespectful, defamatory, or libelous language.</li>
+                        <li>They do not relate whatsoever to Bowdoin or the Bowdoin experience (including spam, commercial promotion, and incoherence).</li>
+                        <li>They include personally identifying/sensitive information.</li>
+                        <li>They are a duplicate of a previously posted pin.</li>
+                        <li>They are blank (a pin without any main text).</li>
+                    </ul>
+                    <p class="card-text">
+                        Bowdoin Moments strives to be as consistent as possible in 
+                        moderation, but final judgments are the subjective 
+                        decision of the moderators. Bowdoin Moments reserves the 
+                        right to delete any pin for any reason. Please fill out 
+                        the <a href="https://qfreeaccountssjc1.az1.qualtrics.com/jfe/form/SV_3UEcXI3C7s7n6VE">feedback form</a> 
+                        if you have any issues, questions, or 
+                        think a certain pin violates the policy above. Due to the 
+                        high volume of pins, Bowdoin Moments may not be able to 
+                        respond to inquiries related to specific moderation 
+                        decisions.
+                    </p>
+                    <p>
+                        The views expressed in pins are solely those of the anonymous contributor. They are not 
+                        endorsed or promoted by Bowdoin Moments or Bowdoin College.
+                    </p>
+                    <p>
+                        Bowdoin Moments collects traffic data using Google Analytics. However, no personally 
+                        identifying information will ever be collected in relation to pin submissions and pin browsing. 
+                        If you would like to opt-out of having this data collected, 
+                        <a href="javascript:gaOptout()">click here</a>.
+                    </p>
+                    <br/>
+                    <a href="{{ url_for('index') }}">Back to Bowdoin Moments</a>
                 </div>
             </div>
         </div>
