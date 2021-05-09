@@ -32,6 +32,10 @@ class Pin(db.Model):
 def index():
     return render_template("index.html")
 
+@app.route('/policy')
+def policy():
+    return render_template("policy.html")
+
 @app.route('/pindata')
 def pindata():
     pins = Pin.query.all()

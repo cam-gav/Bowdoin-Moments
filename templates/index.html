@@ -1,173 +1,235 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QX2QSCK81"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+	<head>
+		<!-- Opt-Out - Google Analytics -->
+        <script>
+            // Set to the same value as the web property used on the site
+            var gaProperty = 'G-6QX2QSCK81';
+            
+            // Disable tracking if the opt-out cookie exists.
+            var disableStr = 'ga-disable-' + gaProperty;
+            if (document.cookie.indexOf(disableStr + '=true') > -1) {
+              window[disableStr] = true;
+            }
+            
+            // Opt-out function
+            function gaOptout() {
+              document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+              window[disableStr] = true;
+            }
+        </script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QX2QSCK81"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
 
-      gtag('config', 'G-6QX2QSCK81');
-    </script>
+			gtag('config', 'G-6QX2QSCK81');
+		</script>
 
-    <!--OWN CSS-->
-    <link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='css/styles.css') }}">
-    
-    <!--BOOTSTRAP CSS-->
-    <link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='css/bootstrap.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
-    
-    <!--LEAFLET CSS-->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
-    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-    crossorigin=""/>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" crossorigin=""/>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" crossorigin=""/>
-    
-    <title>Bowdoin Moments</title>
-    <style>
-      a:hover { color: #00FF00; } /* CSS link hover (green) */
-    </style>
-  </head>
+		<!--OWN CSS-->
+		<link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='css/styles.css') }}">
+		
+		<!--BOOTSTRAP CSS-->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+		<!-- 
+		<link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='css/bootstrap.min.css') }}">
+		<link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='css/bootstrap.css') }}"> 
+		-->
 
-  <body>
-    <div id="mapid"></div>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+		
+		<!--LEAFLET CSS-->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+		integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+		crossorigin=""/>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" crossorigin=""/>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" crossorigin=""/>
+		
+		<title>Bowdoin Moments</title>
+		<style>
+			a:hover { color: #00FF00; } /* CSS link hover (green) */
+		</style>
+	</head>
 
-    <button type="button" id="button" class="btn btn-dark overlay orientation-button bodytext"><h1>Bowdoin Moments</h1></button>
-    <div id="menu" class="text-white bg-dark overlay orientation-box">
-      <p class="bodytext">A geospatial storytelling platform for capturing meaningful moments at Bowdoin College. This story is a collective project—together, our moments map the layers of life at Bowdoin.</p>
-      <p class="bodytext">Click through the pins to browse other people's moments or <a href="{{ url_for('addpin') }}">add your own</a> to the map.</p>
-      <p class="bodytext">Give us feedback <a href="https://qfreeaccountssjc1.az1.qualtrics.com/jfe/form/SV_3UEcXI3C7s7n6VE" target="_blank">here</a>.</p>
-      <p class="bodytext text-muted">You can click the title above to hide this box.</p>
-    </div>
+	<body>
+		<div id="mapid"></div>
 
-    <a id="footer" href="https://github.com/cam-gav/"><i class="fab fa-github overlay orientation-footer"></i></a>
+		<button type="button" id="button" class="btn btn-dark overlay orientation-button bodytext"><h1>Bowdoin Moments</h1></button>
+		<div id="menu" class="accordion text-white bg-dark overlay orientation-box">
+			<div class="accordion-item bg-dark">
+				<h2 class="accordion-header" id="about">
+					<button class="accordion-button collapsed bg-secondary border-light text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						About
+					</button>
+				</h2>
+				<div id="collapseOne" class="accordion-collapse collapse bg-dark show" aria-labelledby="about" data-bs-parent="#menu">
+					<div class="accordion-body bodytext">
+						<p>Welcome to our living autobiography!</p>
+						<p>We are a geospatial storytelling platform for capturing meaningful moments at Bowdoin College. This story is a collective project—together, our moments map the layers of life at Bowdoin.</p>
+					</div>
+				</div>
+			</div>
+			<div class="accordion-item bg-dark">
+				<h2 class="accordion-header" id="instructions">
+					<button class="accordion-button collapsed bg-secondary border-light text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						Instructions
+					</button>
+				</h2>
+				<div id="collapseTwo" class="accordion-collapse collapse bg-dark" aria-labelledby="instructions" data-bs-parent="#menu">
+					<div class="accordion-body bodytext">Click through the pins to browse other people's moments or <a href="{{ url_for('addpin') }}">add your own</a> to the map.</div>
+				</div>
+			</div>
+			<div class="accordion-item bg-dark">
+				<h2 class="accordion-header" id="more">
+					<button class="accordion-button collapsed bg-secondary border-light text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						More
+					</button>
+				</h2>
+				<div id="collapseThree" class="accordion-collapse collapse bg-dark" aria-labelledby="more" data-bs-parent="#menu">
+					<div class="accordion-body bodytext">
+						<p><a href="{{ url_for('policy') }}">Community Agreement & Privacy Policy</a></p>
+						<p><a href="https://qfreeaccountssjc1.az1.qualtrics.com/jfe/form/SV_3UEcXI3C7s7n6VE" target="_blank">Submit feedback</a></p>
+						<p><a href="https://github.com/cam-gav/" target="_blank">GitHub <i class="fab fa-github"></i></a></p>
+					</div>
+				</div>
+			</div>
+			<div class="alert alert-dark alert-warning alert-dismissible fade show bodytext" role="alert">
+				Click the 'Bowdoin Moments' title to toggle the menu.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		</div>
 
-    <!--BOOTSTRAP SCRIPTS-->
-    <script src= "{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-    <script src= "{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.6.0/js/all.js" integrity="sha384-z9ZOvGHHo21RqN5De4rfJMoAxYpaVoiYhuJXPyVmSs8yn20IE3PmBM534CffwSJI" crossorigin="anonymous"></script>
+		<a id="footer" href="https://github.com/cam-gav/"><i class="fab fa-github overlay orientation-footer"></i></a>
 
-    <!--JQUERY SCRIPTS-->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+		<!--BOOTSTRAP SCRIPTS-->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+		<!-- 
+		<script src= "{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+		<script src= "{{ url_for('static', filename='js/bootstrap.min.js') }}"></script> 
+		-->
 
-    <!--LEAFLET SCRIPTS-->
-    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
-    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
-    crossorigin=""></script>
-    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+		<script defer src="https://use.fontawesome.com/releases/v5.6.0/js/all.js" integrity="sha384-z9ZOvGHHo21RqN5De4rfJMoAxYpaVoiYhuJXPyVmSs8yn20IE3PmBM534CffwSJI" crossorigin="anonymous"></script>
 
-    <script type="text/javascript">
-      // create map
-      var mymap = L.map('mapid', {zoomControl: false}).setView([43.9069,-69.9621], 16);
+		<!--JQUERY SCRIPTS-->
+		<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-        maxZoom: 19,
-      }).addTo(mymap);
-      
-      /*
-      // -- For working with raster tilesets and static maps from Mapbox (needs perosonal access token):
+		<!--LEAFLET SCRIPTS-->
+		<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+		integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+		crossorigin=""></script>
+		<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 
-      //Raster:
-      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-      //Static:
-      //L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-          
-          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-          
-          ////For Raster Tiles API:
-          maxZoom: 19,
+		<script type="text/javascript">
+			// create map
+			var mymap = L.map('mapid', {zoomControl: false}).setView([43.9069,-69.9621], 16);
 
-          // Pick one:
-          //id: 'mapbox.streets',
-          id: 'mapbox.mapbox-streets-v8',
-          //id: 'mapbox.dark',
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+				maxZoom: 19,
+			}).addTo(mymap);
+			
+			/*
+			// -- For working with raster tilesets and static maps from Mapbox (needs perosonal access token):
 
-          
-          ////For Static Tiles API:
-          //maxZoom: 20,
+			//Raster:
+			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+			//Static:
+			//L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+					
+					attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+					
+					////For Raster Tiles API:
+					maxZoom: 19,
 
-          //id: 'mapbox/streets-v11',
-          //id: 'mapbox/light-v10',
+					// Pick one:
+					//id: 'mapbox.streets',
+					id: 'mapbox.mapbox-streets-v8',
+					//id: 'mapbox.dark',
 
-          // basic
-          //id: 'cpareja/ck9t5vns706ii1io8iviclrm6',
+					
+					////For Static Tiles API:
+					//maxZoom: 20,
 
-          // basic light
-          //id: 'cpareja/ck9t66fqe06qo1ip3x6v7zuty',
+					//id: 'mapbox/streets-v11',
+					//id: 'mapbox/light-v10',
 
-          // monochrome light
-          //id: 'cpareja/ck9t6bp9n06vz1ip3osp11do7',
+					// basic
+					//id: 'cpareja/ck9t5vns706ii1io8iviclrm6',
 
-          // Required for static tiles: 
-          //tileSize: 512,
-          //zoomOffset: -1,
-          
+					// basic light
+					//id: 'cpareja/ck9t66fqe06qo1ip3x6v7zuty',
 
-          accessToken: 'insert MapBox personal access token here'
-      }).addTo(mymap);
-      */
+					// monochrome light
+					//id: 'cpareja/ck9t6bp9n06vz1ip3osp11do7',
 
-      L.control.zoom({position:'topright'}).addTo(mymap);
+					// Required for static tiles: 
+					//tileSize: 512,
+					//zoomOffset: -1,
+					
 
-      $( "#button" ).click(function() {
-        $( "#menu" ).toggle();
-      });
+					accessToken: 'insert MapBox personal access token here'
+			}).addTo(mymap);
+			*/
 
-      // -- For implementing a like button. Can be added to renderData() in return...bindPopup(...+ icon)
-      //var icon = '<button id="react" class="btn btn-outline-primary btn-sm">\
-      //              <div class="row">\
-      //                <div id="icon" class="col-md-1">\
-      //                  <i class="fas fa-heart"></i>\
-      //               </div>\
-      //              </div>\
-      //            </button>'
+			L.control.zoom({position:'topright'}).addTo(mymap);
 
-      // rendering pins without clustering
-      function renderData() {
-        $.getJSON("/pindata", function(obj) {
-            var markers = obj.data.map(function(arr) {
-              return L.marker([arr[0], arr[1]]).bindPopup(
-                "<b>@ "+ arr[3] + "</b><br><br>" + 
-                arr[2] + 
-                " <a class='text-muted'><i>" + arr[4] + "</i></a>"
-              );
-          });
-        layer = L.layerGroup(markers);
-        mymap.addLayer(layer);
-        });
-      }
+			$( "#button" ).click(function() {
+				$( "#menu" ).toggle();
+			});
 
-      // show most recent submission on load
-      window.setTimeout(function() {
-        layer.eachLayer(function(m) {
-          m.openPopup();
-        });
-      }, 500);
+			// -- For implementing a like button. Can be added to renderData() in return...bindPopup(...+ icon)
+			//var icon = '<button id="react" class="btn btn-outline-primary btn-sm">\
+			//                            <div class="row">\
+			//                                <div id="icon" class="col-md-1">\
+			//                                    <i class="fas fa-heart"></i>\
+			//                             </div>\
+			//                            </div>\
+			//                        </button>'
+
+			// rendering pins without clustering
+			function renderData() {
+				$.getJSON("/pindata", function(obj) {
+						var markers = obj.data.map(function(arr) {
+							return L.marker([arr[0], arr[1]]).bindPopup(
+								"<b>@ "+ arr[3] + "</b><br><br>" + 
+								arr[2] + 
+								" <a class='text-muted'><i>" + arr[4] + "</i></a>"
+							);
+					});
+				layer = L.layerGroup(markers);
+				mymap.addLayer(layer);
+				});
+			}
+
+			// show most recent submission on load
+			window.setTimeout(function() {
+				layer.eachLayer(function(m) {
+					m.openPopup();
+				});
+			}, 500);
 
 
-      $(function() {renderData();})
+			$(function() {renderData();})
 
-      $('#mapid').on('click', '#react', function() {
-        console.log('hi');
-        document.getElementById("react").classList.remove('btn-outline-primary');
-        document.getElementById("react").classList.add('btn-primary');
-      });
+			$('#mapid').on('click', '#react', function() {
+				console.log('hi');
+				document.getElementById("react").classList.remove('btn-outline-primary');
+				document.getElementById("react").classList.add('btn-primary');
+			});
 
-      // rendering pins with clustering - might incorporate this later
-      // var markerGroup = L.markerClusterGroup();
-      // function renderData() {
-      //   $.getJSON( "/pindata", function(obj) {
-      //     var markers = obj.data.map(function(arr) {
-      //       var marker = L.marker([arr[0], arr[1]]).bindPopup("<b>I cried @ "+ arr[3] + "</b> <br><br>" + arr[2] + "<br><br>" + icon2);
-      // 	    markerGroup.addLayer(marker);
-      //     });
-      //     mymap.addLayer(markerGroup);
-      //   });
-      // }
-    </script>
-  </body>
+			// rendering pins with clustering - might incorporate this later
+			// var markerGroup = L.markerClusterGroup();
+			// function renderData() {
+			//     $.getJSON( "/pindata", function(obj) {
+			//         var markers = obj.data.map(function(arr) {
+			//             var marker = L.marker([arr[0], arr[1]]).bindPopup("<b>I cried @ "+ arr[3] + "</b> <br><br>" + arr[2] + "<br><br>" + icon2);
+			// 	        markerGroup.addLayer(marker);
+			//         });
+			//         mymap.addLayer(markerGroup);
+			//     });
+			// }
+		</script>
+	</body>
 </html>
